@@ -1,0 +1,13 @@
+.entry {
+  background-color: cadetblue;
+  display: inline-block;
+  margin: 5px;
+}
+
+.entry .text {
+  display: inline;
+}
+
+.entry .meta * {
+  display: inline-block;
+}

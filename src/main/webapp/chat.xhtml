@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:tc="http://myfaces.apache.org/tobago/component">
+  <!-- todo applicationIcon="#{request.contextPath}/icon/favicon.ico" -->
+  <tc:page label="Chat Home" id="page">
+
+    <tc:style file="#{request.contextPath}/css/style.css"/>
+
+    <tc:out value="Hallo Chat!"/>
+
+    <tc:in value="#{controller.newEntry.value}">
+      <f:facet name="after">
+        <tc:button label="Senden" action="#{controller.send}" defaultCommand="true"/>
+      </f:facet>
+    </tc:in>
+
+    <ui:repeat value="#{chat.entries}" var="entry">
+
+      <tc:panel>
+        <tc:style customClass="bubble"/>
+        <tc:panel>
+          <tc:style customClass="entry"/>
+          <tc:out value="#{entry.value}">
+            <tc:style customClass="text"/>
+          </tc:out>
+          <tc:panel customClass="meta">
+            (von #{entry.author} am
+            <tc:out labelLayout="skip" value="#{entry.time}">
+              <f:convertDateTime type="both" timeStyle="medium" dateStyle="short"/>
+            </tc:out>)
+          </tc:panel>
+        </tc:panel>
+      </tc:panel>
+
+    </ui:repeat>
+
+    <tc:image value="#{request.contextPath}/image/sonnenuntergang.jpg">
+      <tc:style width="100%"/>
+    </tc:image>
+
+  </tc:page>
+</f:view>
